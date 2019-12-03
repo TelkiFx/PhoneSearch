@@ -1,9 +1,12 @@
 package logic;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Person {
 
     private String name;
-    private String phoneNumber;
+    private Set<String> phoneNumbers = new HashSet<String>();
     private String address;
 
     public void setName(String name) {
@@ -14,12 +17,12 @@ public class Person {
         return name;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void addPhoneNumber(String phoneNumber) {
+        phoneNumbers.add(phoneNumber);
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public Set<String> getPhoneNumbers() {
+        return phoneNumbers;
     }
 
     public void setAddress(String address) {
@@ -32,6 +35,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return getName() + " (" + getPhoneNumber() + ")" + "\n" + getAddress();
+        return getName() + " (" + getPhoneNumbers() + ")" + "\n" + getAddress();
     }
 }
