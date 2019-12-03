@@ -10,7 +10,7 @@ public class Person {
     private Set<String> phoneNumbers = new HashSet<String>();
     private String address;
 
-    public void setName(String name) {
+    public Person(String name) {
         this.name = name;
     }
 

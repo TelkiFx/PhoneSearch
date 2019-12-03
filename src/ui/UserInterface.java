@@ -1,24 +1,14 @@
 package ui;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import logic.Commands;
-import logic.Person;
 
 public class UserInterface {
 
     private Scanner scanner = new Scanner(System.in);
-    private Commands commands = new Commands();
-    private List<Person> people = new ArrayList<Person>();
 
     public void run() {
         menu();
-        System.out.println();
         options();
-        for (Person person : people) {
-            System.out.println(person);
-        }
     }
 
     public void menu() {
@@ -44,10 +34,6 @@ public class UserInterface {
                     String name = scanner.nextLine();
                     System.out.print("number: ");
                     String phoneNumber = scanner.nextLine();
-                    Person person = new Person();
-                    person.setName(name);
-                    person.addPhoneNumber(phoneNumber);
-                    people.add(person);
                     break;
                 case "2":
                     System.out.println();
