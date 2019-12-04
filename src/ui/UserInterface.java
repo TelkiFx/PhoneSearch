@@ -1,17 +1,15 @@
 package ui;
 
 import java.util.Scanner;
+import logic.People;
+import logic.Person;
 
 public class UserInterface {
 
     private Scanner scanner = new Scanner(System.in);
+    private People people = new People();
 
     public void run() {
-        menu();
-        options();
-    }
-
-    public void menu() {
         System.out.println("phone search");
         System.out.println("available operations:");
         System.out.println(" 1 add a number");
@@ -22,6 +20,7 @@ public class UserInterface {
         System.out.println(" 6 delete personal information");
         System.out.println(" 7 filtered listing");
         System.out.println(" x quit");
+        options();
     }
 
     public void options() {
@@ -30,13 +29,10 @@ public class UserInterface {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.print("whose number: ");
-                    String name = scanner.nextLine();
-                    System.out.print("number: ");
-                    String phoneNumber = scanner.nextLine();
+                    addNumber();
                     break;
                 case "2":
-                    System.out.println();
+                    searchNumber();
                     break;
                 case "3":
                     System.out.println();
@@ -58,6 +54,32 @@ public class UserInterface {
                 default:
                     System.out.println("That is not a valid choice.");
             }
+        }
+    }
+
+    public void addNumber() {
+        System.out.print("whose number: ");
+        String name = scanner.nextLine();
+        System.out.print("number: ");
+        String phoneNumber = scanner.nextLine();
+
+        if (!people.contains(name)) {
+            Person person = new Person(name);
+            person.addPhoneNumber(phoneNumber);
+            people.add(person);
+        } else {
+            people.getPerson(name).addPhoneNumber(phoneNumber);
+        }
+    }
+
+    public void searchNumber() {
+        System.out.print("whose number: ");
+        String name = scanner.nextLine();
+        Person person = people.getPerson(name);
+        if (person == null) {
+            System.out.println("  not found");
+        } else {
+            System.out.println(person.getPhoneNumbers());
         }
     }
 
