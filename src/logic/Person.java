@@ -1,42 +1,63 @@
 package logic;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Person {
 
     private String name;
-    private Set<String> phoneNumbers = new HashSet<String>();
+    private List<String> phoneNumbers = new ArrayList<String>();
     private String address;
 
-    public Person(String name) {
+    public Person(String name, String address) {
         this.name = name;
+        this.address = address;
+    }
+
+    public Person(String name) {
+        this(name, null);
+    }
+
+    public void addPhoneNumber(String phoneNumber) {
+        if (!phoneNumbers.contains(phoneNumber)) {
+            phoneNumbers.add(phoneNumber);
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public void addPhoneNumber(String phoneNumber) {
-        phoneNumbers.add(phoneNumber);
-    }
-
-    public Set<String> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public String getPhoneNumbers() {
+        StringBuilder builder = new StringBuilder();
+        if (!phoneNumbers.isEmpty()) {
+            builder.append("  phone numbers:").append("\n");
+            for (int i = 0; i < phoneNumbers.size(); i++) {
+                if (i < phoneNumbers.size() - 1) {
+                    builder.append("    ").append(phoneNumbers.get(i)).append("\n");
+                } else {
+                    builder.append("    ").append(phoneNumbers.get(i));
+                }
+            }
+            return builder.toString();
+        }
+        return "  phone number not found";
     }
 
     public String getAddress() {
-        return address;
+        if (address == null) {
+            return "  address unknown";
+        }
+        return "  address: " + address;
     }
 
     @Override
     public String toString() {
-        return getName() + " (" + getPhoneNumbers() + ")" + "\n" + getAddress();
+        String information = getName() + "\n";
+        information += getAddress() + "\n";
+        information += getPhoneNumbers();
+        return information;
     }
 
     @Override
