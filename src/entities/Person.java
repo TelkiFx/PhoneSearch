@@ -67,23 +67,4 @@ public class Person implements Comparable<Person> {
         return this.getName().compareTo(o.getName());
     }
 
-/*    @Override
-    public boolean equals(Object object) {
-        if (object == this) {
-            return true;
-        }
-        if (object == null) {
-            return false;
-        }
-        if (!(object instanceof Person)) {
-            return false;
-        }
-        Person that = (Person) object;
-        return Objects.equals(this.name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }*/
 }
