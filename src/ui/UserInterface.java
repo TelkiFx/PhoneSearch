@@ -46,7 +46,7 @@ public class UserInterface {
                     commands.removePerson();
                     break;
                 case "7":
-                    System.out.println();
+                    commands.keyword();
                     break;
                 case "x":
                     return;
