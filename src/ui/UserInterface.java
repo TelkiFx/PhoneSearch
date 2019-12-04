@@ -39,10 +39,10 @@ public class UserInterface {
                     searchPerson();
                     break;
                 case "4":
-                    System.out.println();
+                    addAddress();
                     break;
                 case "5":
-                    System.out.println();
+                    getInformation();
                     break;
                 case "6":
                     System.out.println();
@@ -94,6 +94,35 @@ public class UserInterface {
             System.out.println(" not found");
         } else {
             System.out.println(" " + person.getName());
+        }
+    }
+
+    public void addAddress() {
+        System.out.print("whose address: ");
+        String name = scanner.nextLine();
+        System.out.print("street: ");
+        String street = scanner.nextLine();
+        System.out.print("city: ");
+        String city = scanner.nextLine();
+        if (!people.contains(name)) {
+            Person person = new Person(name);
+            person.setAddress(city, street);
+            people.add(person);
+        } else {
+            people.getPersonByName(name).setAddress(street, city);
+        }
+
+    }
+
+    public void getInformation() {
+        System.out.print("whose information: ");
+        String name = scanner.nextLine();
+        Person person = people.getPersonByName(name);
+        if (person == null) {
+            System.out.println(" not found");
+        } else {
+            System.out.println(person.getAddress());
+            System.out.println(person.getPhoneNumbers());
         }
     }
 
