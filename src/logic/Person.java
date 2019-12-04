@@ -45,6 +45,10 @@ public class Person {
         return "  phone number not found";
     }
 
+    public List<String> getListPhoneNumbers() {
+        return phoneNumbers;
+    }
+
     public String getAddress() {
         if (address == null) {
             return "  address unknown";
