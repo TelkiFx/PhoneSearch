@@ -2,6 +2,7 @@ package ui;
 
 import entities.People;
 import entities.Person;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Commands {
@@ -61,7 +62,7 @@ public class Commands {
         String city = scanner.nextLine();
         if (people.notContains(name)) {
             Person person = new Person(name);
-            person.setAddress(city, street);
+            person.setAddress(street, city);
             people.add(person);
         } else {
             people.getPersonByName(name).setAddress(street, city);
@@ -89,6 +90,22 @@ public class Commands {
             System.out.println(" not found");
         } else {
             people.getPeople().remove(person);
+        }
+    }
+
+    public void keyword() {
+        System.out.print("keyword (if empty, all listed): ");
+        String keyword = scanner.nextLine();
+        Collections.sort(people.getPeople());
+        for (Person person : people.getPeople()) {
+            if (person.getName().contains(keyword) || person.getAddress().contains(keyword)) {
+                System.out.println();
+                System.out.println(person);
+            } else {
+                System.out.println();
+                System.out.println(" keyword not found");
+                return;
+            }
         }
     }
 
