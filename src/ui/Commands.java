@@ -97,15 +97,17 @@ public class Commands {
         System.out.print("keyword (if empty, all listed): ");
         String keyword = scanner.nextLine();
         Collections.sort(people.getPeople());
+        boolean found = false;
         for (Person person : people.getPeople()) {
             if (person.getName().contains(keyword) || person.getAddress().contains(keyword)) {
                 System.out.println();
                 System.out.println(person);
-            } else {
-                System.out.println();
-                System.out.println(" keyword not found");
-                return;
+                found = true;
             }
+        }
+        if (!found) {
+            System.out.println();
+            System.out.println(" keyword not found");
         }
     }
 
