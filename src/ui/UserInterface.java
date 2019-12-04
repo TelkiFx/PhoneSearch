@@ -25,6 +25,7 @@ public class UserInterface {
 
     public void options() {
         while (true) {
+            System.out.println();
             System.out.print("command: ");
             String choice = scanner.nextLine();
             switch (choice) {
@@ -35,7 +36,7 @@ public class UserInterface {
                     searchNumber();
                     break;
                 case "3":
-                    System.out.println();
+                    searchPerson();
                     break;
                 case "4":
                     System.out.println();
@@ -68,18 +69,31 @@ public class UserInterface {
             person.addPhoneNumber(phoneNumber);
             people.add(person);
         } else {
-            people.getPerson(name).addPhoneNumber(phoneNumber);
+            people.getPersonByName(name).addPhoneNumber(phoneNumber);
         }
     }
 
     public void searchNumber() {
         System.out.print("whose number: ");
         String name = scanner.nextLine();
-        Person person = people.getPerson(name);
+        Person person = people.getPersonByName(name);
         if (person == null) {
             System.out.println("  not found");
         } else {
-            System.out.println(person.getPhoneNumbers());
+            for (String number : person.getListPhoneNumbers()) {
+                System.out.println(" " + number);
+            }
+        }
+    }
+
+    public void searchPerson() {
+        System.out.print("number: ");
+        String phoneNumber = scanner.nextLine();
+        Person person = people.getPersonByPhone(phoneNumber);
+        if (person == null) {
+            System.out.println(" not found");
+        } else {
+            System.out.println(" " + person.getName());
         }
     }
 
