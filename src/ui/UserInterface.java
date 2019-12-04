@@ -43,7 +43,7 @@ public class UserInterface {
                     commands.getInformation();
                     break;
                 case "6":
-                    System.out.println();
+                    commands.removePerson();
                     break;
                 case "7":
                     System.out.println();

@@ -1,8 +1,8 @@
 package ui;
 
-import java.util.Scanner;
 import entities.People;
 import entities.Person;
+import java.util.Scanner;
 
 public class Commands {
 
@@ -78,6 +78,17 @@ public class Commands {
         } else {
             System.out.println(person.getAddress());
             System.out.println(person.getPhoneNumbers());
+        }
+    }
+
+    public void removePerson() {
+        System.out.print("whose information: ");
+        String name = scanner.nextLine();
+        Person person = people.getPersonByName(name);
+        if (person == null) {
+            System.out.println(" not found");
+        } else {
+            people.getPeople().remove(person);
         }
     }
 
