@@ -7,9 +7,18 @@ public class People {
 
     private List<Person> people = new ArrayList<Person>();
 
-    public Person getPerson(String name) {
+    public Person getPersonByName(String name) {
         for (Person person : people) {
             if (person.getName().equals(name)) {
+                return person;
+            }
+        }
+        return null;
+    }
+
+    public Person getPersonByPhone(String phoneNumber) {
+        for (Person person : people) {
+            if (person.getListPhoneNumbers().contains(phoneNumber)) {
                 return person;
             }
         }
