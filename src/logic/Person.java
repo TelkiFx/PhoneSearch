@@ -10,13 +10,12 @@ public class Person {
     private List<String> phoneNumbers = new ArrayList<String>();
     private String address;
 
-    public Person(String name, String address) {
+    public Person(String name) {
         this.name = name;
-        this.address = address;
     }
 
-    public Person(String name) {
-        this(name, null);
+    public void setAddress(String street, String city) {
+        this.address = street + " " + city;
     }
 
     public void addPhoneNumber(String phoneNumber) {
@@ -35,9 +34,9 @@ public class Person {
             builder.append("  phone numbers:").append("\n");
             for (int i = 0; i < phoneNumbers.size(); i++) {
                 if (i < phoneNumbers.size() - 1) {
-                    builder.append("    ").append(phoneNumbers.get(i)).append("\n");
+                    builder.append("   ").append(phoneNumbers.get(i)).append("\n");
                 } else {
-                    builder.append("    ").append(phoneNumbers.get(i));
+                    builder.append("   ").append(phoneNumbers.get(i));
                 }
             }
             return builder.toString();
