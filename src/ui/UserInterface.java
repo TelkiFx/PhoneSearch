@@ -64,7 +64,7 @@ public class UserInterface {
         System.out.print("number: ");
         String phoneNumber = scanner.nextLine();
 
-        if (!people.contains(name)) {
+        if (people.notContains(name)) {
             Person person = new Person(name);
             person.addPhoneNumber(phoneNumber);
             people.add(person);
@@ -104,7 +104,7 @@ public class UserInterface {
         String street = scanner.nextLine();
         System.out.print("city: ");
         String city = scanner.nextLine();
-        if (!people.contains(name)) {
+        if (people.notContains(name)) {
             Person person = new Person(name);
             person.setAddress(city, street);
             people.add(person);

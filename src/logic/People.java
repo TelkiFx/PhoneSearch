@@ -29,13 +29,13 @@ public class People {
         people.add(person);
     }
 
-    public boolean contains(String name) {
+    public boolean notContains(String name) {
         for (Person person : people) {
             if (person.getName().equals(name)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public List<Person> getPeople() {
