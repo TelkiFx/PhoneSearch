@@ -2,9 +2,8 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Person {
+public class Person implements Comparable<Person> {
 
     private String name;
     private List<String> phoneNumbers = new ArrayList<String>();
@@ -57,13 +56,18 @@ public class Person {
 
     @Override
     public String toString() {
-        String information = getName() + "\n";
+        String information = " " + getName() + "\n";
         information += getAddress() + "\n";
         information += getPhoneNumbers();
         return information;
     }
 
     @Override
+    public int compareTo(Person o) {
+        return this.getName().compareTo(o.getName());
+    }
+
+/*    @Override
     public boolean equals(Object object) {
         if (object == this) {
             return true;
@@ -81,5 +85,5 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
+    }*/
 }
