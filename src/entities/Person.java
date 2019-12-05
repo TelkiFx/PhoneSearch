@@ -1,12 +1,12 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Person implements Comparable<Person> {
 
     private String name;
-    private List<String> phoneNumbers = new ArrayList<String>();
+    private SortedSet<String> phoneNumbers = new TreeSet<String>();
     private String address;
 
     public Person(String name) {
@@ -18,9 +18,7 @@ public class Person implements Comparable<Person> {
     }
 
     public void addPhoneNumber(String phoneNumber) {
-        if (!phoneNumbers.contains(phoneNumber)) {
-            phoneNumbers.add(phoneNumber);
-        }
+        phoneNumbers.add(phoneNumber);
     }
 
     public String getName() {
@@ -30,20 +28,20 @@ public class Person implements Comparable<Person> {
     public String getPhoneNumbers() {
         StringBuilder builder = new StringBuilder();
         if (!phoneNumbers.isEmpty()) {
-            builder.append("  phone numbers:").append("\n");
-            for (int i = 0; i < phoneNumbers.size(); i++) {
+            int i = 0;
+            for (String phoneNumber : phoneNumbers) {
                 if (i < phoneNumbers.size() - 1) {
-                    builder.append("   ").append(phoneNumbers.get(i)).append("\n");
-                } else {
-                    builder.append("   ").append(phoneNumbers.get(i));
+                    builder.append("   ").append(phoneNumber).append("\n");
+                    i += 1;
                 }
             }
+            builder.append("   ").append(phoneNumbers.last());
             return builder.toString();
         }
         return "  phone number not found";
     }
 
-    public List<String> getListPhoneNumbers() {
+    public SortedSet<String> getListPhoneNumbers() {
         return phoneNumbers;
     }
 
@@ -58,6 +56,7 @@ public class Person implements Comparable<Person> {
     public String toString() {
         String information = " " + getName() + "\n";
         information += getAddress() + "\n";
+        information += "  phone numbers:\n";
         information += getPhoneNumbers();
         return information;
     }

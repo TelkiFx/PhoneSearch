@@ -81,6 +81,7 @@ public class Commands {
             System.out.println(" not found");
         } else {
             System.out.println(person.getAddress());
+            System.out.println("  phone numbers:");
             System.out.println(person.getPhoneNumbers());
         }
     }
