@@ -77,6 +77,7 @@ public class Commands {
         String name = scanner.nextLine();
         Person person = people.getPersonByName(name);
         if (person == null) {
+            System.out.println();
             System.out.println(" not found");
         } else {
             System.out.println(person.getAddress());
@@ -89,6 +90,7 @@ public class Commands {
         String name = scanner.nextLine();
         Person person = people.getPersonByName(name);
         if (person == null) {
+            System.out.println();
             System.out.println(" not found");
         } else {
             people.remove(person);

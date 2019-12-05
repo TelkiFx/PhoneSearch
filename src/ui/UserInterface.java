@@ -7,7 +7,7 @@ public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
     private Commands commands = new Commands(scanner);
 
-    public void run() {
+    public UserInterface() {
         System.out.println("phone search");
         System.out.println("available operations:");
         System.out.println(" 1 add a number");
@@ -18,10 +18,9 @@ public class UserInterface {
         System.out.println(" 6 delete personal information");
         System.out.println(" 7 filtered listing");
         System.out.println(" x quit");
-        options();
     }
 
-    public void options() {
+    public void run() {
         while (true) {
             System.out.println();
             System.out.print("command: ");
