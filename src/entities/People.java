@@ -29,6 +29,10 @@ public class People {
         people.add(person);
     }
 
+    public void remove(Person person) {
+        people.remove(person);
+    }
+
     public boolean notContains(String name) {
         for (Person person : people) {
             if (person.getName().equals(name)) {

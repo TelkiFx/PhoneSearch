@@ -3,11 +3,13 @@ package ui;
 import entities.People;
 import entities.Person;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Commands {
 
     private People people = new People();
+    private List<Person> listOfPeople = people.getPeople();
     private Scanner scanner;
 
     public Commands(Scanner scanner) {
@@ -89,16 +91,16 @@ public class Commands {
         if (person == null) {
             System.out.println(" not found");
         } else {
-            people.getPeople().remove(person);
+            people.remove(person);
         }
     }
 
     public void keyword() {
         System.out.print("keyword (if empty, all listed): ");
         String keyword = scanner.nextLine();
-        Collections.sort(people.getPeople());
+        Collections.sort(listOfPeople);
         boolean found = false;
-        for (Person person : people.getPeople()) {
+        for (Person person : listOfPeople) {
             if (person.getName().contains(keyword) || person.getAddress().contains(keyword)) {
                 System.out.println();
                 System.out.println(person);
